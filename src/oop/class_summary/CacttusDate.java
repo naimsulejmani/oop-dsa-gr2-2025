@@ -1,9 +1,9 @@
 package oop.class_summary;
 
 public class CacttusDate {
-    private int day = 1;
-    private int month = 1;
-    private int year = 1;
+    private int day;
+    private int month;
+    private int year;
 
 
     public int getDay() {
