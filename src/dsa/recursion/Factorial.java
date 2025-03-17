@@ -9,5 +9,6 @@ public class Factorial {
     public static void main(String[] args) {
         long num = factorial(5);
         System.out.println("The factorial of 5 is " + num);
+
     }
 }
