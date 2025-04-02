@@ -28,6 +28,9 @@ public class SearchEngineDemo {
         SearchEngine engine1 = SearchEngine.valueOf("YAHOO");
         System.out.println(engine1);
 
+        int nr = Integer.valueOf("10");
+        double nr1 = Double.valueOf("12.2");
+
 
 
 
