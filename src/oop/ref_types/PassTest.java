@@ -2,20 +2,20 @@ package oop.ref_types;
 
 public class PassTest {
     public static void main(String[] args) {
-        int x = 10;
-        System.out.println("Vlera para thirrjes se metodes eshte: " + x);
-        passByValue(x);
-        System.out.println("Vlera pas thirrjes se metodes eshte: " + x);
+//        int x = 10;
+//        System.out.println("Vlera para thirrjes se metodes eshte: " + x);
+//        passByValue(x);
+//        System.out.println("Vlera pas thirrjes se metodes eshte: " + x);
 
 
-        System.out.println("-------------------------------------------------");
-        MyDate date = new MyDate(1, 1, 2000);
-        System.out.println("Data para thirrjes se metodes eshte: " + date.toString());
-        passByReference(date);
-        System.out.println("Data pas thirrjes se metodes eshte: " + date.toString());
-
-
-
+//        System.out.println("-------------------------------------------------");
+//        MyDate date = new MyDate(1, 1, 2000);
+//        System.out.println("Data para thirrjes se metodes eshte: " + date.toString());
+//        passByReference(date);
+//        System.out.println("Data pas thirrjes se metodes eshte: " + date.toString());
+//
+//
+//
         System.out.println("-------------------------------------------------");
         MyDate date1 = new MyDate(1, 1, 2000);
         System.out.println("Data para thirrjes se metodes eshte: " + date1);
