@@ -1,10 +1,21 @@
 package oop.arrays_example.fifa;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class PlayerService {
     // lista ku kemi me i ruajt lojtaret / nje lloj tabele memorike
     private static ArrayList<Player> players = new ArrayList<>();
+
+    //static block initializer
+    static {
+        players.add(new Player("Naim", "Sulejmani",
+                LocalDate.of(1986, 12, 16), "N. Macedonia",
+                "Shkupi", 'M', Position.GK));
+        players.add(new Player("Avdi", "Shabani",
+                LocalDate.of(2006, 12, 1), "Kosove",
+                "Drita", 'M', Position.CF));
+    }
 
 
     // INSERT INTO Player(...) VALUES (...)
@@ -35,9 +46,10 @@ public class PlayerService {
     }
 
     public static void print(Player player) {
-        System.out.printf("%-5d %-20s %-20s %-10s %-10s %-10s %-10s %n",
+        System.out.printf("%-5d %-20s %-20s %-10s %-20s %-20s %-2s %s%n",
                 player.getId(), player.getName(), player.getSurname(), player.getBirthdate(),
-                player.getCountry(), player.getClub(), player.getPosition());
+                player.getCountry(), player.getClub(), player.getPosition(),
+                player.isActive() ? "✅" : "❌");
     }
 
     public static void removePlayerById(long id) {
@@ -49,6 +61,7 @@ public class PlayerService {
         players.remove(player);
         System.out.println("Player with id " + id + " removed successfully!");
     }
+
 
 }
 
