@@ -63,6 +63,9 @@ public class PlayerService {
     }
 
 
+    public static void clear() {
+        players.clear();
+    }
 }
 
 

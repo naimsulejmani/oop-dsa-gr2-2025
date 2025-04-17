@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class PlayerDemo {
 
-
+    //https://notepad.pw/pinguinat
     public static void main(String[] args) {
 
         Scanner reader = new Scanner(System.in);
@@ -57,11 +57,16 @@ public class PlayerDemo {
             return;
         }
         System.out.println("A je i sigurte se deshironi te retire lojtarin: \n" + player);
-        System.out.print("YES - per po, Cfaredo tjeter per JO...: ");
-        String answer = reader.nextLine();
+//        System.out.print("YES - per po, Cfaredo tjeter per JO...: ");
+//        String answer = reader.nextLine();
+//
+//        if (!answer.equalsIgnoreCase("yes")) {
+//            System.out.println("E MORE PISHMANLI!!!");
+//            return;
+//        }
 
-        if (!answer.equalsIgnoreCase("yes")) {
-            System.out.println("E MORE PISHMANLI!!!");
+        if (!confirm(reader)) {
+            System.out.println("I re pishman!");
             return;
         }
         player.setActive(false);
@@ -78,14 +83,63 @@ public class PlayerDemo {
     }
 
     private static void find(Scanner reader) {
-
+        System.out.println("Welcome to Find Player Menu");
+        System.out.println("--------------------------------");
+        PlayerService.printAllPlayers();
+        System.out.print("Select id of the player that you want to find: ");
+        long id = Long.parseLong(reader.nextLine());
+        Player player = PlayerService.findPlayerById(id);
+        if (player == null) {
+            System.out.println("Player with id " + id + " not found!");
+            return;
+        }
+        System.out.println("You selected: ");
+        System.out.println("----------------------------------------");
+        System.out.printf("ID: %d%n", player.getId());
+        System.out.printf("Name: %s%n", player.getName());
+        System.out.printf("Surname: %s%n", player.getSurname());
+        System.out.printf("Birthdate: %s%n", player.getBirthdate());
+        System.out.printf("Country: %s%n", player.getCountry());
+        System.out.printf("Club: %s%n", player.getClub());
+        System.out.printf("Position: %s%n", player.getPosition());
+        System.out.printf("Active: %s%n", player.isActive() ? "✅" : "❌");
+        System.out.println("----------------------------------------");
     }
 
     private static void transfer(Scanner reader) {
+        System.out.println("Welcome to Transfer Player Menu");
+        System.out.println("-------------------------------");
+        PlayerService.printAllPlayers();
+        System.out.print("Select player id to transfer: ");
+        long id = Long.parseLong(reader.nextLine());
+        Player player = PlayerService.findPlayerById(id);
+        if (player == null) {
+            System.out.println("Player with id " + id + " not found!");
+            return;
+        }
+        System.out.println("You selected: ");
+        PlayerService.print(player);
+        System.out.println("Enter a new club: ");
+        String newClub = reader.nextLine();
+        System.out.printf("Deshironi te transferoni lojtarin nga %s ne -> %s?%n", player.getClub(), newClub);
+        if (!confirm(reader)) {
+            System.out.println("Transferimi deshtoi!");
+            return;
+        }
+
+        player.setClub(newClub);
+        System.out.println("Transferimi u kry me sukses!");
+
     }
 
     private static void clear(Scanner reader) {
-
+        System.out.println("A je i sigurte se deshironi te resetoni databazen (listen)!");
+        if (!confirm(reader)) {
+            System.out.println("Shyqyr qe i re pishman!");
+            return;
+        }
+        PlayerService.clear();
+        System.out.println("Database reset successfully!");
     }
 
     private static void delete(Scanner reader) {
@@ -98,6 +152,76 @@ public class PlayerDemo {
     }
 
     private static void update(Scanner reader) {
+        System.out.println("Welcome to Update Player Menu");
+        System.out.println("---------------------------------------");
+        PlayerService.printAllPlayers();
+        System.out.print("Select one of the player id: ");
+        long id = Long.parseLong(reader.nextLine());
+        Player player = PlayerService.findPlayerById(id);
+        if (player == null) {
+            System.out.println("Player with id " + id + " not found!");
+            return;
+        }
+
+        System.out.println("A deshironi me ndryshu emrin?");
+        if (confirm(reader)) {
+            System.out.print("Enter new name:");
+            String name = reader.nextLine();
+            player.setName(name);
+        }
+
+        System.out.println("A deshironi me ndryshu mbiemrin?");
+        if (confirm(reader)) {
+            System.out.print("Enter new surname:");
+            String surname = reader.nextLine();
+            player.setSurname(surname);
+        }
+
+        System.out.println("A deshironi me ndryshu daten e lindjes?");
+        if (confirm(reader)) {
+            System.out.print("Enter new birthdate(YYYY-MM-DD): ");
+            String birthdate = reader.nextLine();
+            player.setBirthdate(LocalDate.parse(birthdate));
+        }
+
+        System.out.println("A deshironi me ndryshu shtetin?");
+        if (confirm(reader)) {
+            System.out.print("Enter new country:");
+            String country = reader.nextLine();
+            player.setCountry(country);
+        }
+
+        System.out.println("A deshironi me ndryshu club?");
+        if (confirm(reader)) {
+            System.out.print("Enter new club:");
+            String club = reader.nextLine();
+            player.setClub(club);
+        }
+
+        System.out.println("A deshironi me ndryshu gjinine?");
+        if (confirm(reader)) {
+            System.out.print("Enter new gender:");
+            char gender = reader.nextLine().charAt(0);
+            player.setGender(gender);
+        }
+
+        System.out.println("A deshironi me ndryshu pozicionin?");
+        if (confirm(reader)) {
+            System.out.print("Enter new position:");
+            System.out.println("Enter one of the following positions: ");
+            System.out.print(Arrays.toString(Position.values()) + ": ");
+            String position = reader.nextLine().toUpperCase();
+            player.setPosition(Position.valueOf(position));
+        }
+
+        System.out.println("A deshironi me ndryshu statusin?");
+        if (confirm(reader)) {
+            System.out.print("Enter new status (TRUE/FALSE):");
+            boolean active = Boolean.parseBoolean(reader.nextLine());
+            player.setActive(active);
+        }
+        System.out.println("Update successfully!");
+
 
     }
 
@@ -134,6 +258,13 @@ public class PlayerDemo {
         }
         System.out.println("-------------------------------------------------------");
         System.out.print("Zgjedh opsionin: ");
+    }
+
+    public static boolean confirm(Scanner reader) {
+        System.out.println("A je i sigurte? ");
+        System.out.print("YES - per po, Cfaredo tjeter per JO...: ");
+        String answer = reader.nextLine();
+        return answer.equalsIgnoreCase("yes");
     }
 }
 
