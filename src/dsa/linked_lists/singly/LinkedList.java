@@ -1,5 +1,7 @@
 package dsa.linked_lists.singly;
 
+import java.util.List;
+
 public class LinkedList {
     private Node head;
     private int size;
@@ -184,25 +186,67 @@ public class LinkedList {
     }
 
 
+    public int[] toArray() {
+        int[] array = new int[size];
+        Node temp = head;
+        for (int i = 0; i < size; i++) {
+            array[i] = temp.getData();
+            temp = temp.getNext();
+        }
+        return array;
+    }
 
-    /*
+    public boolean contains(int data) {
+        return indexOf(data) != -1;
+    }
 
+    public int indexOf(int data) {
+        Node temp = head;
+        for (int i = 0; i < size; i++) {
+            if (temp.getData() == data) {
+                return i;
+            }
+            temp = temp.getNext();
+        }
+        return -1;
+    }
 
+    public void setFirst(int data) {
+        if (isEmpty()) {
+            System.out.println("Lista eshte empty!");
+            return;
+        }
+        head.setData(data);
+    }
 
+    public void setLast(int data) {
+        if (isEmpty()) {
+            System.out.println("Lista eshte empty!");
+            return;
+        }
+        Node lastNode = findNodeByIndex(size - 1);
+        lastNode.setData(data);
+    }
 
+    public void setAt(int index, int data) {
+        if (index < 0 || index >= size) {
+            System.out.println("Index out of range!");
+            return;
+        }
 
-        remove(int index);
-        addAll(...)
-        removeAll(...)
-        toArray() -> Node[], int[]
-        printAll()
-        print(int index)
-        setFirst(int data)
-        setLast(int data)
-        set(int index, int data)
-        contains(int data)
-        indexOf(int data)
-        indexOf(int afterIndex, int data)
+        if (isEmpty()) {
+            System.out.println("lista eshte empty!");
+            return;
+        }
 
-     */
+        Node temp = findNodeByIndex(index);
+        temp.setData(data);
+    }
+
+    public void addAll(List<Integer> list) {
+        for (int data : list) {
+            addLast(data);
+        }
+
+    }
 }
