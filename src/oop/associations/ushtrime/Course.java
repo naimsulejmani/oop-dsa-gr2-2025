@@ -1,13 +1,15 @@
 package oop.associations.ushtrime;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class Course {
     private final String id;
     private String name;
     private static final int MAX_STUDENTS = 50;
-    private Student[] enrolledStudents = new Student[MAX_STUDENTS];
-    private int enrolledStudentsCount = 0;
+    //    private Student[] enrolledStudents = new Student[MAX_STUDENTS];
+//    private int enrolledStudentsCount = 0;
+    private ArrayList<Student> enrolledStudents = new ArrayList<>(MAX_STUDENTS);
     private Professor professor;
 
 
@@ -34,11 +36,13 @@ public class Course {
             System.out.println("Course is fulL! No more free seats!");
             return;
         }
-        enrolledStudents[enrolledStudentsCount++] = student;
+//        enrolledStudents[enrolledStudentsCount++] = student;
+        enrolledStudents.add(student);
     }
 
     public int freeSeats() {
-        return MAX_STUDENTS - enrolledStudentsCount;
+        //return MAX_STUDENTS - enrolledStudents;
+        return MAX_STUDENTS - enrolledStudents.size();
     }
 
     public boolean hasFreeSeats() {
@@ -52,12 +56,15 @@ public class Course {
         System.out.println("Course professor:" + professor.getName() + " " + professor.getSurname());
         System.out.println("Enrolled students:");
         System.out.println("-------------------------------------");
-        for (int i = 0; i < enrolledStudentsCount; i++) {
-            var student = enrolledStudents[i];
+//        for (int i = 0; i < enrolledStudentsCount; i++) {
+//            var student = enrolledStudents[i];
+//            System.out.printf("%d. %s %s%n", student.getId(), student.getName(), student.getSurname());
+//        }
+        for (Student student : enrolledStudents) {
             System.out.printf("%d. %s %s%n", student.getId(), student.getName(), student.getSurname());
         }
         System.out.println("-------------------------------------");
-        System.out.println("Total students registered: " + enrolledStudentsCount);
+        System.out.println("Total students registered: " + enrolledStudents.size() );
         System.out.println("-------------------------------------");
         System.out.println("Printed date and time: " + LocalDateTime.now());
         System.out.println("-------------------------------------");

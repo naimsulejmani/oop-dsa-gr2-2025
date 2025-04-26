@@ -3,12 +3,12 @@ package oop.associations.ushtrime;
 public class Professor {
     private static int nextId = 1;
     private final int id;
+    private static final int MAX_COURSES = 20;
 
     private String name;
     private String surname;
-    private Course[] courses;
+    private Course[] courses = new Course[MAX_COURSES];
     private int courseCount;
-    private static final int MAX_COURSES = 20;
 
 
     public Professor(String name, String surname) {
