@@ -17,8 +17,6 @@ public class LinkedList {
         Node newNode = new Node(data);
         if (isEmpty()) {
             head = tail = newNode;
-            //head = newNode;
-            //tail = newNode;
         } else {
             newNode.setNext(head);
             head.setPrev(newNode);
