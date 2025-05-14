@@ -18,6 +18,8 @@ public class AviaryDemo {
         Bird bird = parrot;
         Object object = parrot;
 
+        System.out.println("E FUNDIT => "+object.toString());
+
 
     }
 }
