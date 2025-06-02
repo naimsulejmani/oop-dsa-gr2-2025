@@ -66,7 +66,15 @@ public class HashTable<K, V> {
     }
 
     public K getKey(V value) {
-
+        for (ArrayList<Entry<K, V>> entries : hashTable) {
+            if (entries != null) {
+                for (Entry<K, V> entry : entries) {
+                    if (entry.getValue().equals(value)) {
+                        return entry.getKey();
+                    }
+                }
+            }
+        }
         return null;
     }
 
@@ -75,7 +83,14 @@ public class HashTable<K, V> {
     }
 
     public void remove(K key) {
-
+        int hashIndex = hash(key);
+        for (Entry<K, V> entry : hashTable[hashIndex]) {
+            if (entry.getKey().equals(key)) {
+                hashTable[hashIndex].remove(entry);
+                size--;
+                return;
+            }
+        }
     }
 
     public void clear() {
@@ -102,7 +117,19 @@ public class HashTable<K, V> {
     }
 
     public V[] values() {
-        return null;
+        Object[] values = new Object[size];
+        for (int i = 0; i < hashTable.length; i++) {
+            if (hashTable[i] != null) {
+                for (Entry<K, V> entry : hashTable[i]) {
+                    values[i] = entry.getValue();
+                    if (hashTable[i].size() > 1) {
+                        i++;
+                    }
+                }
+            }
+        }
+        return (V[]) values;
+
     }
 }
 
