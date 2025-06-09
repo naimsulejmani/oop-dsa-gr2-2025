@@ -9,6 +9,14 @@ public class KeyListenerDemo {
             switch (listenerType) {
                 case "EN":
                     listener = new EnKeyListener();
+
+                    if(listener instanceof KeyListener) {
+                        System.out.println("INSTANCE E KEY LISTENER");
+                    }
+
+                    if(listener instanceof Object) {
+                        System.out.println("INSTANCE E OBJECT");
+                    }
                     break;
                 case "VJ":
                     listener = new VjosaKeyListener();
@@ -24,6 +32,16 @@ public class KeyListenerDemo {
     }
 
     public static void simulateKeyThings(KeyListener listener) {
+
+        if (listener instanceof EnKeyListener) {
+            System.out.println("Using EN implementation");
+        } else if (listener instanceof VjosaKeyListener vj1) {
+//            VjosaKeyListener vjListener = (VjosaKeyListener)listener;
+//            vjListener.test();
+            vj1.test();
+            System.out.println("Using VJ implementation");
+        }
+
         listener.keyPressed('a');
         listener.keyDown('b');
         listener.keyUp('c');

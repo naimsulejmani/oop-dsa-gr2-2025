@@ -11,6 +11,7 @@ public class EnKeyListener implements KeyListener {
         System.out.println("EN -> You have pressed the key down: " + key);
     }
 
+
     @Override
     public void keyUp(char key) {
         System.out.println("EN -> You have released the key: " + key);

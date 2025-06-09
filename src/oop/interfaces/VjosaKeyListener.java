@@ -15,4 +15,9 @@ public class VjosaKeyListener implements  KeyListener{
     public void keyUp(char key) {
         System.out.println("VJ -> You have released the key: " + key);
     }
+
+
+    public void test() {
+        System.out.println("TESTING KEY");
+    }
 }
