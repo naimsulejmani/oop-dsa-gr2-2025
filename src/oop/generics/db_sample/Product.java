@@ -1,11 +1,14 @@
 package oop.generics.db_sample;
 
+import java.time.LocalDate;
+
 public class Product implements Comparable<Product> {
     private String id;
     private String name;
     private double price;
+    private LocalDate date;
 
-    public Product(String id, String name, double price) {
+    public Product(String id, String name, double price, LocalDate date) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -38,9 +41,25 @@ public class Product implements Comparable<Product> {
         this.price = price;
     }
 
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
     @Override
     public int compareTo(Product o) {
-        return Double.compare(this.price, o.price);
+        int cmp = this.date.getYear() - o.getDate().getYear();
+        if (cmp == 0) {
+            cmp = this.date.getMonthValue() - o.getDate().getMonthValue();
+            if (cmp == 0) {
+                cmp = this.date.getDayOfMonth() - o.getDate().getDayOfMonth();
+
+            }
+        }
+        return cmp;
     }
 
     @Override
