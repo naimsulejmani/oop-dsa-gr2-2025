@@ -8,9 +8,9 @@ import java.util.Scanner;
 public class IteratorExample {
     public static void main(String[] args) {
         List<Product> products = new ArrayList<>();
-        products.add(new Product("1", "Naim", 1.0));
-        products.add(new Product("2", "Ronaldo", 2.0));
-        products.add(new Product("3", "Messi", 3.0));
+//        products.add(new Product("1", "Naim", 1.0));
+//        products.add(new Product("2", "Ronaldo", 2.0));
+//        products.add(new Product("3", "Messi", 3.0));
 
         for (Product p : products) {
             System.out.println(p);

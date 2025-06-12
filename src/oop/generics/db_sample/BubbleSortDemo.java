@@ -14,9 +14,9 @@ public class BubbleSortDemo {
 
         Product[] products =
                 new Product[]{
-                        new Product("1", "Naim", 1.0),
-                        new Product("2", "Ronaldo", 2.0),
-                        new Product("3", "Messi", -3.0)
+//                        new Product("1", "Naim", 1.0),
+//                        new Product("2", "Ronaldo", 2.0),
+//                        new Product("3", "Messi", -3.0)
                 };
         new BubbleSort<Product>().sort(products);
         System.out.println(Arrays.toString(products));
