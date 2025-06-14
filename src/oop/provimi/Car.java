@@ -10,7 +10,7 @@ public class Car {
 
 
     public Car(String vin, String model, int fuelCapacity, double price, String color, Tire[] tires)
-    throws SomeWheelsNotFoundException {
+    throws SomeWheelsNotFoundException, LimitExceedException {
         setVin(vin);
         this.model = model;
         setFuelCapacity(fuelCapacity);
@@ -52,9 +52,11 @@ public class Car {
         return fuelCapacity;
     }
 
-    public void setFuelCapacity(int fuelCapacity) {
-        if (fuelCapacity < 30 || fuelCapacity > 80) {
+    public void setFuelCapacity(int fuelCapacity) throws LimitExceedException {
+        if (fuelCapacity < 30) {
             throw new IllegalArgumentException("Invalid fuel capacity. It must be between 30 and 80.");
+        } else if(fuelCapacity > 80) {
+            throw new LimitExceedException("Keni kaluar kufirin e lejuar");
         }
         this.fuelCapacity = fuelCapacity;
     }
