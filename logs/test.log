@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2025-06-04T18:18:10.237239657Z</date>
+  <millis>1749061090237</millis>
+  <nanos>239657</nanos>
+  <sequence>0</sequence>
+  <logger>oop.logging.LogMeFile</logger>
+  <level>SEVERE</level>
+  <class>oop.logging.LogMeFile</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>TEST</message>
+</record>
+</log>
